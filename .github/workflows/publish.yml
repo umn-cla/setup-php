@@ -20,16 +20,16 @@ jobs:
     steps:
       - name: Checkout release
         if: github.event_name != 'workflow_dispatch'
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       - name: Checkout tag
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         if: github.event_name == 'workflow_dispatch'
         with:
           ref: ${{ github.event.inputs.tag }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: '24.x'
           registry-url: https://registry.npmjs.org
@@ -45,7 +45,7 @@ jobs:
         run: npm publish --access public
 
       - name: Change to GitHub Packages registry
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           registry-url: https://npm.pkg.github.com
           scope: '@shivammathur'
